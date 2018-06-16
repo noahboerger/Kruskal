@@ -23,7 +23,7 @@ public class Graph {
 	public Collection<Edge> edges() {
 		Set s = new HashSet<Edge>();
 		for (Vertex v : vertices()) {
-			for (Edge e : v.edges)
+			for (Edge e : v.getEdges())
 				s.add(e);
 		}
 		return s;
@@ -31,6 +31,14 @@ public class Graph {
 
 	public Collection<Vertex> vertices() {
 		return graph.values();
+	}
+
+	public Map<String, Vertex> getGraph() {
+		return graph;
+	}
+
+	public void setGraph(Map<String, Vertex> graph) {
+		this.graph = graph;
 	}
 
 	public Vertex getVertex(String s) {
@@ -46,7 +54,7 @@ public class Graph {
 		Vertex v = getVertex(source);
 		Vertex w = getVertex(dest);
 		Edge e = new Edge(v, w, cost);
-		v.edges.add(e);
-		w.edges.add(e);
+		v.getEdges().add(e);
+		w.getEdges().add(e);
 	}
 }

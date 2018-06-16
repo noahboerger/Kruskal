@@ -27,7 +27,7 @@ public class GraphIO {
 	public static void printGraph(Graph graph) {
 		System.out.println("Adjazenslisten des Graphen:\n");
 		for (Vertex v : graph.vertices()) {
-			for (Edge e : v.edges) {
+			for (Edge e : v.getEdges()) {
 				if (e.getLeft() == v) {
 					System.out.println("(" + e.getLeft().getName() + "," + e.getRight().getName() + ")");
 				} else {

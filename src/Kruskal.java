@@ -4,10 +4,10 @@ public class Kruskal {
 
 	private static Vertex findAndUpdateChef(Vertex v)
 	{
-		while(v.chef != v)
+		while(v.getChef() != v)
 		{
-			v.chef = v.chef.chef;
-			v = v.chef;
+			v.setChef(v.getChef().getChef());
+			v = v.getChef();
 		}
 		return v;
 	}
@@ -19,7 +19,7 @@ public class Kruskal {
 		
 		for(Vertex v : g.vertices())
 		{
-			v.chef = v;
+			v.setChef(v);
 		}
 		int count = 0;
 		
@@ -28,12 +28,12 @@ public class Kruskal {
 		while(count <  g.size()-1)
 		{
 			Edge e = p.poll();
-			x = findAndUpdateChef(e.left);
-			y = findAndUpdateChef(e.right);
+			x = findAndUpdateChef(e.getLeft());
+			y = findAndUpdateChef(e.getRight());
 			if (x != y)
 			{
-				x.chef = y;
-				e.status = true;
+				x.setChef(y);
+				e.setStatus(true);
 				count++;
 			}
 		}

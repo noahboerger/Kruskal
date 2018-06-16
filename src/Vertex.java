@@ -4,9 +4,29 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class Vertex {
-	public String name;
-	public List<Edge> edges;
-	public Vertex chef;
+	private String name;
+	private List<Edge> edges;
+	private Vertex chef;
+
+	public List<Edge> getEdges() {
+		return edges;
+	}
+
+	public void setEdges(List<Edge> edges) {
+		this.edges = edges;
+	}
+
+	public Vertex getChef() {
+		return chef;
+	}
+
+	public void setChef(Vertex chef) {
+		this.chef = chef;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
 
 	public Vertex(String name) {
 		this.name = name;

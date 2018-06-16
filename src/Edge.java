@@ -1,9 +1,9 @@
 
 public class Edge {
-	Vertex left;
-	Vertex right;
-	double cost;
-	boolean status;
+	private Vertex left;
+	private Vertex right;
+	private double cost;
+	private boolean status;
 
 	public Edge(Vertex left, Vertex right, double cost) {
 		this.left = left;

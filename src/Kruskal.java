@@ -1,5 +1,8 @@
 import java.util.*;
 
+import com.sun.corba.se.impl.orbutil.graph.Graph;
+import com.sun.javafx.geom.Edge;
+
 public class Kruskal {
 
 	private static Vertex findAndUpdateChef(Vertex v)
@@ -25,5 +28,17 @@ public class Kruskal {
 		
 		Vertex x,y;
 		
+		while(count <  g.size()-1)
+		{
+			Edge e = p.poll();
+			x = findAndUpdateChef(e.left);
+			y = findAndUpdateChef(e.right);
+			if (x != y)
+			{
+				x.Chef = y;
+				e.status = true;
+				count++;
+			}
+		}
 	}
 }

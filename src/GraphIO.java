@@ -1,8 +1,6 @@
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.io.Reader;
 import java.util.StringTokenizer;
 
 public class GraphIO {
@@ -17,7 +15,7 @@ public class GraphIO {
 			String destination = stringtoken.nextToken();
 			double cost = Double.parseDouble(stringtoken.nextToken());
 			graph.addEdge(source, destination, cost);
-			reader.readLine();
+			zeile = reader.readLine();
 		}
 		reader.close();
 		System.out.println("Es wurden " + graph.size() + " Knoten eingelesen.");
@@ -25,15 +23,15 @@ public class GraphIO {
 	}
 
 	public static void printGraph(Graph graph) {
-		System.out.println("Adjazenslisten des Graphen:\n");
+		System.out.println("\nAdjazenslisten des Graphen:\n");
 		for (Vertex v : graph.vertices()) {
 			for (Edge e : v.getEdges()) {
 				if (e.getLeft() == v) {
-					System.out.println("(" + e.getLeft().getName() + "," + e.getRight().getName() + ")");
+					System.out.print("(" + e.getLeft().getName() + "," + e.getRight().getName() + ") ");
 				} else {
-					System.out.println("(" + e.getRight().getName() + "," + e.getLeft().getName() + ")");
-					System.out.println(e.getCost() + "");
+					System.out.print("(" + e.getRight().getName() + "," + e.getLeft().getName() + ") ");
 				}
+				System.out.print(e.getCost() + "    ");
 			}
 			System.out.println();
 		}

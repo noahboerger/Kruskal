@@ -21,7 +21,7 @@ public class Graph {
 	}
 
 	public Collection<Edge> edges() {
-		Set s = new HashSet<Edge>();
+		Set<Edge> s = new HashSet<Edge>();
 		for (Vertex v : vertices()) {
 			for (Edge e : v.getEdges())
 				s.add(e);

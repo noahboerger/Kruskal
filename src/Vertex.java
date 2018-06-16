@@ -3,37 +3,17 @@ import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 
-public class Vertex {
+public class Vertex { // Initialisiere Konten
 	private String name;
 	private List<Edge> edges;
-	private Vertex chef;
-
-	public List<Edge> getEdges() {
-		return edges;
-	}
-
-	public void setEdges(List<Edge> edges) {
-		this.edges = edges;
-	}
-
-	public Vertex getChef() {
-		return chef;
-	}
-
-	public void setChef(Vertex chef) {
-		this.chef = chef;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
+	private Vertex chef; // nutze "Chef" um Kreise zu erkenne
 
 	public Vertex(String name) {
 		this.name = name;
 		edges = new LinkedList<Edge>();
 	}
 
-	public Collection<Vertex> neighbors() {
+	public Collection<Vertex> neighbors() { //sucht Nachbar eines Knoten 
 		Collection<Vertex> name = new HashSet<Vertex>();
 		for (Edge e : edges) {
 			if (e.getLeft() != this) {
@@ -55,7 +35,28 @@ public class Vertex {
 		return false;
 	}
 
+	// Setter und Getter- Methoden
 	public String getName() {
 		return name;
+	}
+
+	public List<Edge> getEdges() {
+		return edges;
+	}
+
+	public void setEdges(List<Edge> edges) {
+		this.edges = edges;
+	}
+
+	public Vertex getChef() {
+		return chef;
+	}
+
+	public void setChef(Vertex chef) {
+		this.chef = chef;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 }

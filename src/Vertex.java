@@ -3,33 +3,38 @@ import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 
-public class Vertex { // Initialisiere Konten
+public class Vertex { 
+
+	//Deklaration der Variablen
 	private String name;
 	private List<Edge> edges;
-	private Vertex membership; // nutze Zugehörigkeit um Kreise zu erkenne
+	// nutze Zugehörigkeit um Kreise zu erkenne
+	private Vertex membership; 
 
 	public Vertex(String name) {
 		this.name = name;
 		edges = new LinkedList<Edge>();
 	}
 
-	public Collection<Vertex> neighbors() { //sucht Nachbar eines Knoten 
-		Collection<Vertex> name = new HashSet<Vertex>();
+	//Gibt alle Nachbarknoten als Collection zurück
+	public Collection<Vertex> neighbors() {
+		Collection<Vertex> neighbors = new HashSet<Vertex>();
 		for (Edge e : edges) {
 			if (e.getLeft() != this) {
-				name.add(e.getLeft());
+				neighbors.add(e.getLeft());
 			}
 			if (e.getRight() != this) {
-				name.add(e.getRight());
+				neighbors.add(e.getRight());
 			}
 		}
-		return name;
+		return neighbors;
 
 	}
 
+	//Überprüft ob Kante mit anderem Knoten besteht
 	public boolean hasEdge(Vertex with) {
-		for (Vertex v : neighbors())
-			if (v == with) {
+		for (Vertex vertex : neighbors())
+			if (vertex == with) {
 				return true;
 			}
 		return false;

@@ -6,9 +6,9 @@ import java.io.Reader;
 import java.util.StringTokenizer;
 
 public class GraphIO {
-	public static Graph readGraph() throws IOException {
+	public static Graph readGraph(String path) throws IOException {
 		Graph graph = new Graph();
-		BufferedReader reader = new BufferedReader(new FileReader("pfadandereseinlesenTODO.csv"));
+		BufferedReader reader = new BufferedReader(new FileReader(path));
 		String zeile;
 		zeile = reader.readLine();
 		while (zeile != null) {

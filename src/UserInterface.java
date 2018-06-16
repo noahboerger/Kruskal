@@ -61,6 +61,7 @@ public class UserInterface extends JFrame implements ActionListener {
 			if (returnVal == JFileChooser.APPROVE_OPTION) {
 				path = chooser.getSelectedFile().getPath();
 			}
+			
 		} else if (event.getSource() == graph_anzeigen) {
 			// Graph anzeigen Button läd den Graphen (insofern möglich) und gibt dessen
 			// Adjazenslisten auf neuem JFrame aus
@@ -96,6 +97,7 @@ public class UserInterface extends JFrame implements ActionListener {
 						"Anderen Pfad wählen", JOptionPane.ERROR_MESSAGE);
 				return;
 			}
+			
 		} else if (event.getSource() == matrix_loesen) {
 			// Matrix Lösen Button läd den Graphen aus dem angegebenen Pfad (insofern
 			// möglich), ruft mit ihm die Kruskal-Methode auf und gibt die Lösung auf einem

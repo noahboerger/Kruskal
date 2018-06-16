@@ -12,5 +12,15 @@ public class starter {
 		GraphIO.printGraph(testgraph);
 		
 		Kruskal.kruskal(testgraph);
+		
+		System.out.println("Blah Blah Spannbaum: ");
+		int kostengesamt = 0;
+		for(Edge e: testgraph.edges()) {
+			if(e.isStatus()) {
+				System.out.println("(" + e.getLeft().getName() + "," + e.getRight().getName() + ")  " + e.getCost());
+				kostengesamt += e.getCost();
+			}
+		}
+		System.out.println("Gesamstkosten: " + kostengesamt);
 	}
 }

@@ -63,7 +63,6 @@ public class UserInterface extends JFrame implements ActionListener {
 						JOptionPane.ERROR_MESSAGE);
 				return;
 			}
-			// TODO Pfadchecken und exception handling
 				try {
 					Graph graph = GraphIO.readGraph(path);
 					graph.printGraph();
@@ -79,9 +78,9 @@ public class UserInterface extends JFrame implements ActionListener {
 						}
 					}
 					System.out.println("Gesamstkosten: " + gesamtkosten);
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
+				} catch (Exception e) {
+					JOptionPane.showMessageDialog(this, "Ausgewählte Datei kann nicht gelesen werden \nNur CSV Dateien im richtigen Format können gelesen werden", "Anderen Pfad wählen",
+							JOptionPane.ERROR_MESSAGE);
 				}
 		}
 	}

@@ -6,7 +6,7 @@ public class starter {
 	
 	public static void main(String[] args) throws IOException {
 
-		Graph testgraph = GraphIO.readGraph("C:\\Users\\noahb\\Desktop\\Testgraphen\\Graph.dat");
+		Graph testgraph = GraphIO.readGraph("C:\\Users\\noahb\\Desktop\\Testgraphen\\Graph.csv");
 		
 		//TODO METHODE MOVEN ZU GRAPH
 		GraphIO.printGraph(testgraph);

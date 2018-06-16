@@ -1,3 +1,7 @@
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
 
 public class Vertex {
 	public String name;
@@ -10,14 +14,16 @@ public class Vertex {
 	}
 
 	public Collection<Vertex> neighbors() {
-		Collection name = new HashSet<Vertex>();
+		Collection<Vertex> name = new HashSet<Vertex>();
 		for (Edge e : edges) {
-			if (e.left != this)
-				name.add(e.left);
-			if (e.right != this)
-				name.add(e.right);
+			if (e.getLeft() != this) {
+				name.add(e.getLeft());
+			}
+			if (e.getRight() != this) {
+				name.add(e.getRight());
+			}
 		}
-		return s;
+		return name;
 
 	}
 
@@ -27,5 +33,9 @@ public class Vertex {
 				return true;
 			}
 		return false;
+	}
+
+	public String getName() {
+		return name;
 	}
 }

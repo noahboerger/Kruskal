@@ -1,15 +1,12 @@
 import java.util.*;
 
-import com.sun.corba.se.impl.orbutil.graph.Graph;
-import com.sun.javafx.geom.Edge;
-
 public class Kruskal {
 
 	private static Vertex findAndUpdateChef(Vertex v)
 	{
 		while(v.chef != v)
 		{
-			v.chef = c.chef.chef;
+			v.chef = v.chef.chef;
 			v = v.chef;
 		}
 		return v;
@@ -20,7 +17,7 @@ public class Kruskal {
 		PriorityQueue<Edge> p = new PriorityQueue<Edge>();
 		p.addAll(g.edges());
 		
-		for(Vertex v : g.Vertices())
+		for(Vertex v : g.vertices())
 		{
 			v.chef = v;
 		}
@@ -35,7 +32,7 @@ public class Kruskal {
 			y = findAndUpdateChef(e.right);
 			if (x != y)
 			{
-				x.Chef = y;
+				x.chef = y;
 				e.status = true;
 				count++;
 			}

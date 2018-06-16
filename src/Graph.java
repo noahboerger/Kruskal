@@ -33,33 +33,25 @@ public class Graph {
 		return graph.values();
 	}
 
-	public Map<String, Vertex> getGraph() {
-		return graph;
-	}
-
-	public void setGraph(Map<String, Vertex> graph) {
-		this.graph = graph;
-	}
-
-	public Vertex getVertex(String s) {
-		Vertex v = graph.get(s);
-		if (v == null) {
-			v = new Vertex(s);
-			graph.put(s, v);
+	public Vertex getVertex(String name) {
+		Vertex vertex = graph.get(name);
+		if (vertex == null) {
+			vertex = new Vertex(name);
+			graph.put(name, vertex);
 		}
-		return v;
+		return vertex;
 	}
 
-	public void addEdge(String source, String dest, double cost) {
+	public void addEdge(String source, String destination, double cost) {
 		Vertex v = getVertex(source);
-		Vertex w = getVertex(dest);
+		Vertex w = getVertex(destination);
 		Edge e = new Edge(v, w, cost);
 		v.getEdges().add(e);
 		w.getEdges().add(e);
 	}
-	
-	public  void printGraph() {
-		System.out.println("\nAdjazenslisten des Graphen:\n");
+
+	public void printGraph() {
+		System.out.println("\nAdjazenslisten des Graphen:\n[" + size() + " Knoten]\n");
 		for (Vertex v : vertices()) {
 			for (Edge e : v.getEdges()) {
 				if (e.getLeft() == v) {
@@ -72,5 +64,23 @@ public class Graph {
 			System.out.println();
 		}
 		System.out.println();
+	}
+
+	@Override
+	public String toString() {
+		String graph_string = "<html><body>Adjazenslisten des Graphen:<br>[" + size() + " Knoten]<br><br>";
+		for (Vertex v : vertices()) {
+			for (Edge e : v.getEdges()) {
+				if (e.getLeft() == v) {
+					graph_string += "(" + e.getLeft().getName() + "," + e.getRight().getName() + ") ";
+				} else {
+					graph_string += "(" + e.getRight().getName() + "," + e.getLeft().getName() + ") ";
+				}
+				graph_string += e.getCost() + "    ";
+			}
+			graph_string += "<br>";
+		}
+		graph_string += "</body></html>";
+		return graph_string;
 	}
 }

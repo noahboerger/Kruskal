@@ -6,7 +6,7 @@ import java.util.List;
 public class Vertex { // Initialisiere Konten
 	private String name;
 	private List<Edge> edges;
-	private Vertex chef; // nutze "Chef" um Kreise zu erkenne
+	private Vertex membership; // nutze Zugehörigkeit um Kreise zu erkenne
 
 	public Vertex(String name) {
 		this.name = name;
@@ -48,12 +48,12 @@ public class Vertex { // Initialisiere Konten
 		this.edges = edges;
 	}
 
-	public Vertex getChef() {
-		return chef;
+	public Vertex getMembership() {
+		return membership;
 	}
 
-	public void setChef(Vertex chef) {
-		this.chef = chef;
+	public void setMembership(Vertex membership) {
+		this.membership = membership;
 	}
 
 	public void setName(String name) {

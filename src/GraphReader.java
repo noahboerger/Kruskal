@@ -3,10 +3,12 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.StringTokenizer;
 
-public class GraphIO {
+public class GraphReader {
+	//Erstellen eines Graphen anhand einer Ausgewählten csv Datei die im Pfad path liegt 
 	public static Graph readGraph(String path) throws IOException {
 		Graph graph = new Graph();
 		BufferedReader reader = new BufferedReader(new FileReader(path));
+		//Durchgehen jeder Zeile und erstellen der jeweiligen Knoten und Kanten
 		String zeile;
 		zeile = reader.readLine();
 		while (zeile != null) {
@@ -18,8 +20,6 @@ public class GraphIO {
 			zeile = reader.readLine();
 		}
 		reader.close();
-		
-		System.out.println("Es wurden " + graph.size() + " Knoten eingelesen.");
 		return graph;
 	}
 }

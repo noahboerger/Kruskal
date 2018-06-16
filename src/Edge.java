@@ -1,7 +1,7 @@
 
 public class Edge implements Comparable<Edge> {
 	
-	//Variablen initialisieren
+	//Variablen deklaration
 	private Vertex left;
 	private Vertex right;
 	private double cost;	//Gewichtung
@@ -12,11 +12,12 @@ public class Edge implements Comparable<Edge> {
 		this.left = left;
 		this.right = right;
 		this.cost = cost;
-		status = false;//alle Kanten auf unbenutzt setzen
+		status = false;//alle Kanten auf nicht besucht setzen
 	}
 
 	
 	//Vergleich der Gewichtung zweier Kanten
+	@Override
 	public int compareTo(Edge other) {
 		if (this.getCost() < other.getCost()) {
 			return -1;
@@ -28,8 +29,7 @@ public class Edge implements Comparable<Edge> {
 	}
 
 	
-	//Getter und Setter
-	
+	//Getter und Setter Methoden
 	public Vertex getLeft() {
 		return left;
 	}

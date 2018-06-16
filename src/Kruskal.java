@@ -2,38 +2,32 @@ import java.util.*;
 
 public class Kruskal {
 
-	private static Vertex findAndUpdateChef(Vertex v)
-	{
-		while(v.getChef() != v)
-		{
-			v.setChef(v.getChef().getChef());
-			v = v.getChef();
+	private static Vertex findAndUpdateMembership(Vertex vertex) {
+		while (vertex.getMembership() != vertex) {
+			vertex.setMembership(vertex.getMembership().getMembership());
+			vertex = vertex.getMembership();
 		}
-		return v;
+		return vertex;
 	}
-	
-	public static void kruskal(Graph g)
-	{
+
+	public static void kruskal(Graph graph) {
 		PriorityQueue<Edge> p = new PriorityQueue<Edge>();
-		p.addAll(g.edges());
-		
-		for(Vertex v : g.vertices())
-		{
-			v.setChef(v);
+		p.addAll(graph.edges());
+
+		for (Vertex vertex : graph.vertices()) {
+			vertex.setMembership(vertex);
 		}
 		int count = 0;
-		
-		Vertex x,y;
-		
-		while(count <  g.size()-1)
-		{
-			Edge e = p.poll();
-			x = findAndUpdateChef(e.getLeft());
-			y = findAndUpdateChef(e.getRight());
-			if (x != y)
-			{
-				x.setChef(y);
-				e.setStatus(true);
+
+		Vertex x, y;
+
+		while (count < graph.size() - 1) {
+			Edge edge = p.poll();
+			x = findAndUpdateMembership(edge.getLeft());
+			y = findAndUpdateMembership(edge.getRight());
+			if (x != y) {
+				x.setMembership(y);
+				edge.setStatus(true);
 				count++;
 			}
 		}

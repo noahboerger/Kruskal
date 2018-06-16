@@ -1,26 +1,25 @@
 import java.io.IOException;
 
 public class starter {
-	
+	//todo
 	String filesep = System.getProperty("user.dir");
 	
 	public static void main(String[] args) throws IOException {
 
-		Graph testgraph = GraphIO.readGraph("C:\\Users\\noahb\\Desktop\\Testgraphen\\Graph.csv");
+		Graph testgraph = GraphIO.readGraph("Graph.csv");
 		
-		//TODO METHODE MOVEN ZU GRAPH
-		GraphIO.printGraph(testgraph);
+		testgraph.printGraph();
 		
 		Kruskal.kruskal(testgraph);
 		
 		System.out.println("Blah Blah Spannbaum: ");
-		int kostengesamt = 0;
+		int gesamtkosten = 0;
 		for(Edge e: testgraph.edges()) {
 			if(e.isStatus()) {
 				System.out.println("(" + e.getLeft().getName() + "," + e.getRight().getName() + ")  " + e.getCost());
-				kostengesamt += e.getCost();
+				gesamtkosten += e.getCost();
 			}
 		}
-		System.out.println("Gesamstkosten: " + kostengesamt);
+		System.out.println("Gesamstkosten: " + gesamtkosten);
 	}
 }

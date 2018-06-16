@@ -57,4 +57,20 @@ public class Graph {
 		v.getEdges().add(e);
 		w.getEdges().add(e);
 	}
+	
+	public  void printGraph() {
+		System.out.println("\nAdjazenslisten des Graphen:\n");
+		for (Vertex v : vertices()) {
+			for (Edge e : v.getEdges()) {
+				if (e.getLeft() == v) {
+					System.out.print("(" + e.getLeft().getName() + "," + e.getRight().getName() + ") ");
+				} else {
+					System.out.print("(" + e.getRight().getName() + "," + e.getLeft().getName() + ") ");
+				}
+				System.out.print(e.getCost() + "    ");
+			}
+			System.out.println();
+		}
+		System.out.println();
+	}
 }

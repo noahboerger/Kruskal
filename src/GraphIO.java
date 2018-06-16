@@ -10,7 +10,7 @@ public class GraphIO {
 		String zeile;
 		zeile = reader.readLine();
 		while (zeile != null) {
-			StringTokenizer stringtoken = new StringTokenizer(zeile, ";");
+			StringTokenizer stringtoken = new StringTokenizer(zeile, ";", false);
 			String source = stringtoken.nextToken();
 			String destination = stringtoken.nextToken();
 			double cost = Double.parseDouble(stringtoken.nextToken());

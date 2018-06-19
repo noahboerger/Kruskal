@@ -1,7 +1,8 @@
 import java.util.*;
 
 public class Kruskal {
-
+//Mohammad Alshaker
+	
 	// Setzt die Zugehörigkeit auf die Zugehörigkeit des vorherigen Knotens, damit
 	// alle Knoten eines Netzes die gleiche Zugehörigkeit besitzen, sodass keine
 	// Kreise gebildet werden
@@ -33,7 +34,8 @@ public class Kruskal {
 
 		while (count < graph.size() - 1) {
 			Edge edge = pqueue.poll();
-			left = findAndUpdateMembership(edge.getLeft());
+			//wirft Null-Pointer Exception, wenn Graph aus Teilgraphen ohne zusammenführende Kanten ausgewertet wird!
+			left = findAndUpdateMembership(edge.getLeft());	
 			right = findAndUpdateMembership(edge.getRight());
 			if (left != right) {
 				left.setMembership(right);

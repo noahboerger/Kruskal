@@ -4,7 +4,9 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class Vertex { 
-
+	//Teil Eric Gendner
+	
+	
 	//Deklaration der Variablen
 	private String name;
 	private List<Edge> edges;

@@ -6,6 +6,7 @@ import java.util.Set;
 
 public class Graph {
 
+	//Speicherung der Knoten in einer Map mit Key Name
 	private Map<String, Vertex> graph;
 
 	//Konstruktor

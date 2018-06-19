@@ -2,6 +2,8 @@ import java.awt.BorderLayout;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.util.NoSuchElementException;
 
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
@@ -11,9 +13,8 @@ import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 public class UserInterface extends JFrame implements ActionListener {
-	//Teil Noah Börger
-	
-	
+	// Noah Börger
+
 	private static final long serialVersionUID = 1L;
 
 	// JFrame Variablen
@@ -85,13 +86,19 @@ public class UserInterface extends JFrame implements ActionListener {
 					}
 				}
 
-				JFrame ausgabe = new JFrame("Berechneter Spannbaum:");
+				JFrame ausgabe = new JFrame("Eingetragener Graph:");
 				ausgabe.setBounds(10, 10, 400, 40 + (ausgabegroese - 3) * 20);
 				ausgabe.add(new JLabel(ausgabetext), JLabel.CENTER);
 				ausgabe.setResizable(false);
 				ausgabe.setVisible(true);
-
-			} catch (Exception e) {
+			} catch (IOException e) {
+				// Hier ist Exception Handling sinnvoll, da der User auf seine Fehlauswahl
+				// aufmerksam gemacht werden kann und das Programm so problemlos weiterläuft
+				JOptionPane.showMessageDialog(this,
+						"Ausgewählte Datei kann nicht gelesen werden \nNur CSV Dateien im richtigen Format können gelesen werden",
+						"Anderen Pfad wählen", JOptionPane.ERROR_MESSAGE);
+				return;
+			} catch (NoSuchElementException e) {
 				// Hier ist Exception Handling sinnvoll, da der User auf seine Fehlauswahl
 				// aufmerksam gemacht werden kann und das Programm so problemlos weiterläuft
 				JOptionPane.showMessageDialog(this,
@@ -99,7 +106,6 @@ public class UserInterface extends JFrame implements ActionListener {
 						"Anderen Pfad wählen", JOptionPane.ERROR_MESSAGE);
 				return;
 			}
-
 		} else if (event.getSource() == matrix_loesen) {
 			// Matrix Lösen Button läd den Graphen aus dem angegebenen Pfad (insofern
 			// möglich), ruft mit ihm die Kruskal-Methode auf und gibt die Lösung auf einem
@@ -112,7 +118,17 @@ public class UserInterface extends JFrame implements ActionListener {
 			try {
 				Graph graph = GraphReader.readGraph(path);
 
-				Kruskal.kruskal(graph);
+				try {
+					Kruskal.kruskal(graph);
+				} catch (NullPointerException e) {
+					// Hier ist Exception Handling sinnvoll, da der User auf seine fehlerhaften
+					// Graphen aufmerksam gemacht werden kann und das Programm so problemlos
+					// weiterläuft
+					JOptionPane.showMessageDialog(this,
+							"Kein Zusammenhängender Graph\nBitte wählen Sie eine CSV Datei mit zusammenhängendem Graphen",
+							"Andere CSV Datei wählen", JOptionPane.ERROR_MESSAGE);
+					return;
+				}
 
 				String ausgabetext = "<html><body><center>Spannbaum: <br><br>";
 				int gesamtkosten = 0;
@@ -133,15 +149,14 @@ public class UserInterface extends JFrame implements ActionListener {
 				ausgabe.setResizable(false);
 				ausgabe.setVisible(true);
 
-			} catch (NullPointerException e) {
-				// Hier ist Exception Handling sinnvoll, da der User auf seine fehlerhaften
-				// Graphen aufmerksam gemacht werden kann und das Programm so problemlos
-				// weiterläuft
+			} catch (IOException e) {
+				// Hier ist Exception Handling sinnvoll, da der User auf seine Fehlauswahl
+				// aufmerksam gemacht werden kann und das Programm so problemlos weiterläuft
 				JOptionPane.showMessageDialog(this,
-						"Kein Zusammenhängender Graph\nBitte wählen Sie eine CSV Datei mit zusammenhängendem Graphen",
-						"Andere CSV Datei wählen", JOptionPane.ERROR_MESSAGE);
+						"Ausgewählte Datei kann nicht gelesen werden \nNur CSV Dateien im richtigen Format können gelesen werden",
+						"Anderen Pfad wählen", JOptionPane.ERROR_MESSAGE);
 				return;
-			} catch (Exception e) {
+			} catch (NoSuchElementException e) {
 				// Hier ist Exception Handling sinnvoll, da der User auf seine Fehlauswahl
 				// aufmerksam gemacht werden kann und das Programm so problemlos weiterläuft
 				JOptionPane.showMessageDialog(this,

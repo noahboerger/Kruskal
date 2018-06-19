@@ -2,7 +2,6 @@ import java.awt.BorderLayout;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.IOException;
 
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
@@ -140,7 +139,6 @@ public class UserInterface extends JFrame implements ActionListener {
 						"Kein Zusammenhängender Graph\nBitte wählen Sie eine CSV Datei mit zusammenhängendem Graphen",
 						"Andere CSV Datei wählen", JOptionPane.ERROR_MESSAGE);
 				return;
-
 			} catch (Exception e) {
 				// Hier ist Exception Handling sinnvoll, da der User auf seine Fehlauswahl
 				// aufmerksam gemacht werden kann und das Programm so problemlos weiterläuft

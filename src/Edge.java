@@ -1,6 +1,6 @@
 
 public class Edge implements Comparable<Edge> { 
-	//Teil Brenden Bochmann
+	//Teil Eric Gendner
 	
 	//Variablen deklaration
 	private Vertex left;

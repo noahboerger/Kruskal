@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.util.StringTokenizer;
 
 public class GraphReader {
-	// Noah Börger
+	//Teil Noah Börger
 
 	// Erstellen eines Graphen anhand einer Ausgewählten csv Datei die im Pfad path
 	// liegt

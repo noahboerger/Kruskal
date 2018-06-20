@@ -13,7 +13,7 @@ import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 public class UserInterface extends JFrame implements ActionListener {
-	// Noah Börger
+	//Teil Noah Börger
 
 	private static final long serialVersionUID = 1L;
 
@@ -131,17 +131,15 @@ public class UserInterface extends JFrame implements ActionListener {
 				}
 
 				String ausgabetext = "<html><body><center>Spannbaum: <br><br>";
-				int gesamtkosten = 0;
 				int ausgabegroese = 0;
 				for (Edge e : graph.edges()) {
 					if (e.isStatus()) {
 						ausgabetext += "(" + e.getLeft().getName() + "," + e.getRight().getName() + ")  " + e.getCost()
 								+ "<br>";
-						gesamtkosten += e.getCost();
 						ausgabegroese++;
 					}
 				}
-				ausgabetext += "<br>Gesamstkosten: " + gesamtkosten + "</center></body></html>";
+				ausgabetext += "<br>Gesamstkosten: " + Kruskal.kruskalCost(graph) + "</center></body></html>";
 
 				JFrame ausgabe = new JFrame("Berechneter Spannbaum:");
 				ausgabe.setBounds(10, 10, 180, 100 + ausgabegroese * 20);

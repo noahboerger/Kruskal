@@ -76,8 +76,7 @@ public class Graph {
 	}
 
 	//Gibt Adjazenslisten des Graphen als HTML String für JFrame zurück
-	@Override
-	public String toString() {
+	public String toFomatString() {
 		String graph_string = "<html><body>Adjazenslisten des Graphen:<br>[" + size() + " Knoten]<br><br>";
 		for (Vertex v : vertices()) {
 			for (Edge e : v.getEdges()) {

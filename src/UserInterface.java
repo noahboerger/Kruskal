@@ -76,7 +76,7 @@ public class UserInterface extends JFrame implements ActionListener {
 			try {
 				Graph graph = GraphReader.readGraph(path);
 
-				String ausgabetext = graph.toString();
+				String ausgabetext = graph.toFomatString();
 
 				int ausgabegroese = 0;
 				char tempArray[] = ausgabetext.toCharArray();

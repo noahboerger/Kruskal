@@ -21,7 +21,7 @@ public class Kruskal {
 	// Enden schon die selbe Zugehörigkeit haben. Knoten werden dementsprechen ihre
 	// Zugehörigkeiten geupdatet und als Besucht markiert und die Schleife läuft mit
 	// nächst teurerer Kante weiter.
-	public static void kruskal(Graph graph) {
+	public static double kruskal(Graph graph) {
 		PriorityQueue<Edge> pqueue = new PriorityQueue<Edge>();
 		pqueue.addAll(graph.edges());
 
@@ -44,8 +44,10 @@ public class Kruskal {
 				count++;
 			}
 		}
+		return kruskalCost(graph);
 	}
 
+	//Berechnet Kosten, nachdem der Algorithmus durgeführt wurde
 	public static double kruskalCost(Graph graph) {
 		double gesamtkosten = 0;
 		for (Edge e : graph.edges()) {

@@ -18,8 +18,7 @@ public class KruskalTest {
 	public void Zyklenerkennung() {
 		double ergebnis = 0;
 		Graph graph = TestGraph1();
-		Kruskal.kruskal(graph);
-		ergebnis = Kruskal.kruskalCost(graph);
+		ergebnis = Kruskal.kruskal(graph);
 		assertEquals(ergebnis, 50.0f, 0.0f);
 	}
 
@@ -28,8 +27,7 @@ public class KruskalTest {
 	public void KruskalAlgorithmusTest() {
 		double ergebnis = 0;
 		Graph graph = TestGraph2();
-		Kruskal.kruskal(graph);
-		ergebnis = Kruskal.kruskalCost(graph);
+		ergebnis = Kruskal.kruskal(graph);
 		assertEquals(ergebnis, 137.0f, 0.0f);
 	}
 	

@@ -3,7 +3,6 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
-import java.util.NoSuchElementException;
 
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
@@ -13,7 +12,7 @@ import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 public class UserInterface extends JFrame implements ActionListener {
-	//Teil Noah Börger
+	// Teil Noah Börger
 
 	private static final long serialVersionUID = 1L;
 
@@ -76,6 +75,12 @@ public class UserInterface extends JFrame implements ActionListener {
 			try {
 				Graph graph = GraphReader.readGraph(path);
 
+				if (graph.isEmpty()) {
+					JOptionPane.showMessageDialog(this, "Die Datei konnte nicht eingelesen werden oder hat keinen Inhalt",
+							"Anderen Pfad wählen", JOptionPane.ERROR_MESSAGE);
+					return;
+				}
+
 				String ausgabetext = graph.toFomatString();
 
 				int ausgabegroese = 0;
@@ -98,13 +103,6 @@ public class UserInterface extends JFrame implements ActionListener {
 						"Ausgewählte Datei kann nicht gelesen werden \nNur CSV Dateien im richtigen Format können gelesen werden",
 						"Anderen Pfad wählen", JOptionPane.ERROR_MESSAGE);
 				return;
-			} catch (NoSuchElementException e) {
-				// Hier ist Exception Handling sinnvoll, da der User auf seine Fehlauswahl
-				// aufmerksam gemacht werden kann und das Programm so problemlos weiterläuft
-				JOptionPane.showMessageDialog(this,
-						"Ausgewählte Datei kann nicht gelesen werden \nNur CSV Dateien im richtigen Format können gelesen werden",
-						"Anderen Pfad wählen", JOptionPane.ERROR_MESSAGE);
-				return;
 			}
 		} else if (event.getSource() == matrix_loesen) {
 			// Matrix Lösen Button läd den Graphen aus dem angegebenen Pfad (insofern
@@ -117,6 +115,12 @@ public class UserInterface extends JFrame implements ActionListener {
 			}
 			try {
 				Graph graph = GraphReader.readGraph(path);
+
+				if (graph.isEmpty()) {
+					JOptionPane.showMessageDialog(this, "Die Datei konnte nicht eingelesen werden oder hat keinen Inhalt",
+							"Anderen Pfad wählen", JOptionPane.ERROR_MESSAGE);
+					return;
+				}
 
 				try {
 					Kruskal.kruskal(graph);
@@ -148,13 +152,6 @@ public class UserInterface extends JFrame implements ActionListener {
 				ausgabe.setVisible(true);
 
 			} catch (IOException e) {
-				// Hier ist Exception Handling sinnvoll, da der User auf seine Fehlauswahl
-				// aufmerksam gemacht werden kann und das Programm so problemlos weiterläuft
-				JOptionPane.showMessageDialog(this,
-						"Ausgewählte Datei kann nicht gelesen werden \nNur CSV Dateien im richtigen Format können gelesen werden",
-						"Anderen Pfad wählen", JOptionPane.ERROR_MESSAGE);
-				return;
-			} catch (NoSuchElementException e) {
 				// Hier ist Exception Handling sinnvoll, da der User auf seine Fehlauswahl
 				// aufmerksam gemacht werden kann und das Programm so problemlos weiterläuft
 				JOptionPane.showMessageDialog(this,
